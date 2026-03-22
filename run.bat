@@ -1,0 +1,9 @@
+@echo off
+echo [1/3] install package...
+rem pip install -r requirements.txt
+
+echo [2/3] install Playwright...
+rem playwright install chromium
+
+echo [3/3] start dashboard...
+streamlit run dashboard.py
