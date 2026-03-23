@@ -1,0 +1,15 @@
+services:
+  ollama-dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      # 민감 데이터는 호스트에서 마운트 (컨테이너 재시작 시 유지)
+      - ./account.json:/app/account.json
+      - ./sessions:/app/sessions
+      - ./usage_data.json:/app/usage_data.json
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+    restart: unless-stopped
